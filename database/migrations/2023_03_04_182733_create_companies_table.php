@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('BIN/IIN');
             $table->string('contact_person');
             $table->string('specialty');
-            $table->string('number')->unique();
             $table->timestamp('created_company');
             $table->timestamps();
             $table->softDeletes();

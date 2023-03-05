@@ -9,7 +9,7 @@ class IndexController extends BaseController
 {
     public function __invoke()
     {
-        $posts = Post::with(['images', 'user', 'category', 'comments'])->simplePaginate(50);
+        $posts = Post::with(['images', 'user', 'category', 'comments'])->orderBy('id', 'DESC')->simplePaginate(50);
 
         return IndexResource::collection($posts);
     }

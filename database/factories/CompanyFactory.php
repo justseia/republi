@@ -21,7 +21,6 @@ class CompanyFactory extends Factory
             'BIN/IIN' => fake()->creditCardType(),
             'contact_person' => fake()->name(),
             'specialty' => fake()->name(),
-            'number' => fake()->unique()->e164PhoneNumber(),
             'created_company' => now(),
         ];
     }

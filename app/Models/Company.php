@@ -17,4 +17,14 @@ class Company extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function user()
+    {
+        return $this->morphOne(User::class, 'userable');
+    }
 }

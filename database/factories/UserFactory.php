@@ -18,6 +18,9 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'userable_id' => fake()->numberBetween(1, 50),
+            'userable_type' => 'App\Models\Company',
+            'number' => fake()->unique()->e164PhoneNumber(),
             'username' => fake()->unique()->userName(),
             'email' => fake()->unique()->safeEmail(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

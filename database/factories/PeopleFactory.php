@@ -20,7 +20,6 @@ class PeopleFactory extends Factory
             'full_name' => fake()->name(),
             'birthday' => now(),
             'is_popular' => false,
-            'number' => fake()->unique()->e164PhoneNumber(),
         ];
     }
 }

@@ -10,13 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('people', function (Blueprint $table) {
+        Schema::create('mail_verify_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->timestamp('birthday');
-            $table->boolean('is_popular')->default(false);
+            $table->string('email');
+            $table->unsignedInteger('code');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('people');
+        Schema::dropIfExists('mail_verify_codes');
     }
 };

@@ -8,34 +8,36 @@ use App\Models\PostAdditionalData;
 
 class Service
 {
-    public function store($data)
+    public function store($request)
     {
-        $file_image = $data->file('image');
+        $file_image = $request->file('image');
         $image_name = $file_image->hashName();
         $file_image->storeAs('public', $image_name);
 
         $post = Post::create([
-            'title' => $data['title'],
-            'body' => $data['body'],
-            'user_id' => $data['user_id'],
-            'category_id' => $data['category_id'],
+            'title' => $request->title,
+            'body' => $request->body,
+            'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
         ]);
 
         $image = new Image;
         $image->url = $image_name;
         $post->images()->save($image);
 
-        foreach ($data['additional_data'] as $item) {
-            $file_image = $item->file('image');
-            $image_name = $file_image->hashName();
-            $file_image->storeAs('public', $image_name);
+        if ($request->additional_data) {
+            foreach ($request->additional_data as $item) {
+                $file_image = $item->file('image');
+                $image_name = $file_image->hashName();
+                $file_image->storeAs('public', $image_name);
 
-            $additional_data = new PostAdditionalData;
-            $additional_data->title = $item['title'];
-            $additional_data->body = $item['body'];
-            $additional_data->image = $image_name;
-            $additional_data->quote = $item['quote'];
-            $post->additional_data()->save($additional_data);
+                $additional_data = new PostAdditionalData;
+                $additional_data->title = $item['title'];
+                $additional_data->body = $item['body'];
+                $additional_data->image = $image_name;
+                $additional_data->quote = $item['quote'];
+                $post->additional_data()->save($additional_data);
+            }
         }
     }
 

@@ -10,9 +10,9 @@ class Service
 {
     public function store($data)
     {
-        $image = $data->file('image');
-        $image_name = $image->hashName();
-        $image->storeAs('public', $image_name);
+        $file_image = $data->file('image');
+        $image_name = $file_image->hashName();
+        $file_image->storeAs('public', $image_name);
 
         $post = Post::create([
             'title' => $data['title'],
@@ -26,9 +26,9 @@ class Service
         $post->images()->save($image);
 
         foreach ($data['additional_data'] as $item) {
-            $image = $item->file('image');
-            $image_name = $image->hashName();
-            $image->storeAs('public', $image_name);
+            $file_image = $item->file('image');
+            $image_name = $file_image->hashName();
+            $file_image->storeAs('public', $image_name);
 
             $additional_data = new PostAdditionalData;
             $additional_data->title = $item['title'];

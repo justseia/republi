@@ -11,9 +11,11 @@ class StoreAdditionalController extends Controller
 {
     public function __invoke(Post $post, Request $request)
     {
-        $image = $request->file('image');
-        $image_name = $image->hashName();
-        $image->storeAs('public', $image_name);
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $image_name = $image->hashName();
+            $image->storeAs('public', $image_name);
+        }
 
         $additional_data = new PostAdditionalData;
         $additional_data->title = $request->title;

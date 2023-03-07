@@ -22,10 +22,13 @@ Route::prefix('auth')->group(function () {
     Route::post('/register/company', \App\Http\Controllers\API\Mobile\User\v1\Auth\CompanyStoreController::class);
     Route::post('/login', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleLoginController::class);
     Route::post('/register', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
-//    Route::post('/me', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('/profile', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
+    Route::post('/me', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
+
     Route::get('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\IndexController::class);
     Route::get('/posts/{post}', \App\Http\Controllers\API\Mobile\User\v1\Post\ShowController::class);
     Route::post('/posts/{post}/additional', \App\Http\Controllers\API\Mobile\User\v1\Post\StoreAdditionalController::class);

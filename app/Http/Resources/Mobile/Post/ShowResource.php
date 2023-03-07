@@ -18,7 +18,7 @@ class ShowResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
-            'image' => $this->image->url,
+            'image' => $this->image,
             'additional_data' => AdditionalDataResource::collection($this->additional_data),
             'user' => new UserResource($this->user),
             'category' => $this->category->name,

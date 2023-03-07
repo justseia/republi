@@ -12,4 +12,9 @@ class Like extends Model
     protected $table = 'likes';
     protected $guarded = [];
     protected $hidden = [];
+
+    public function likeable()
+    {
+        return $this->morphTo();
+    }
 }

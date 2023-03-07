@@ -18,6 +18,11 @@ class Post extends Model
         'deleted_at'
     ];
 
+    public function like()
+    {
+        return $this->morphOne(Like::class, 'likeable')->where('user_id', auth()->user()->id);
+    }
+
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');

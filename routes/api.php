@@ -22,12 +22,13 @@ Route::prefix('auth')->group(function () {
     Route::post('/register/company', \App\Http\Controllers\API\Mobile\User\v1\Auth\CompanyStoreController::class);
     Route::post('/login', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleLoginController::class);
     Route::post('/register', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
-    Route::post('/me', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
+//    Route::post('/me', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\IndexController::class);
     Route::get('/posts/{post}', \App\Http\Controllers\API\Mobile\User\v1\Post\ShowController::class);
+    Route::post('/posts/{post}/additional', \App\Http\Controllers\API\Mobile\User\v1\Post\StoreAdditionalController::class);
     Route::post('/posts/{post}/like', \App\Http\Controllers\API\Mobile\User\v1\Post\LikeController::class);
     Route::post('/posts/{post}/unlike', \App\Http\Controllers\API\Mobile\User\v1\Post\UnlikeController::class);
     Route::post('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\StoreController::class);

@@ -13,7 +13,6 @@ class IndexResource extends JsonResource
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
-
     {
         return [
             'id' => $this->id,
@@ -23,6 +22,7 @@ class IndexResource extends JsonResource
             'category' => $this->category->name,
             'images' => $this->images,
             'created_at' => $this->created_at->diffForHumans(now(), true),
+            'is_like' => (boolean)$this->like,
             'total_likes' => $this->likes,
             'total_views' => $this->views,
             'total_comments' => $this->comments->count() + $this->comments->sum(fn($comment) => $comment->replies->count()),

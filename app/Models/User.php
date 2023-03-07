@@ -29,4 +29,8 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    public function like() {
+        return $this->morphMany(Like::class, 'likeable');
+    }
 }

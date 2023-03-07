@@ -10,11 +10,14 @@ class StoreController extends BaseController
     {
         $request->validated();
 
-        $this->service->store($request);
+        $post = $this->service->store($request);
 
         return response()->json([
             'status' => '200',
-            'message' => 'Successfully created'
+            'message' => 'Successfully created',
+            'data' => [
+                'post_id' => $post->id
+            ],
         ], 200);
     }
 }

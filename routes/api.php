@@ -26,8 +26,11 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::post('/profile', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
-    Route::post('/me', \App\Http\Controllers\API\Mobile\User\v1\Auth\PeopleStoreController::class);
+    Route::post('/profile/{user}', \App\Http\Controllers\API\Mobile\User\v1\User\ProfileController::class);
+    Route::post('/profile/{user}/posts', \App\Http\Controllers\API\Mobile\User\v1\User\ProfilePostsController::class);
+
+    Route::post('/me', \App\Http\Controllers\API\Mobile\User\v1\User\MeController::class);
+    Route::post('/me/posts', \App\Http\Controllers\API\Mobile\User\v1\User\MePostsController::class);
 
     Route::get('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\IndexController::class);
     Route::get('/posts/{post}', \App\Http\Controllers\API\Mobile\User\v1\Post\ShowController::class);

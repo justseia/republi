@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\PostAdditionalData::factory(50)->create();
         \App\Models\Comment::factory(50)->create();
         \App\Models\Vacancy::factory(50)->create();
+        \App\Models\VacancyCategory::factory(50)->create();
         \App\Models\Company::factory(50)->create();
         \App\Models\People::factory(50)->create();
     }

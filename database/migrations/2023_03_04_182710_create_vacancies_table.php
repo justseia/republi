@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->string('position');
             $table->unsignedBigInteger('salary_from')->nullable(true);
             $table->unsignedBigInteger('salary_to')->nullable(true);
+            $table->unsignedBigInteger('work_experience_id')->nullable(true);
+            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('company_id');
             $table->json('criteria')->nullable(true);

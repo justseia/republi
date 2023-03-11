@@ -31,13 +31,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/me/posts', \App\Http\Controllers\API\Mobile\User\v1\User\MePostsController::class);
 
     Route::get('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\IndexController::class);
+    Route::post('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\StoreController::class);
     Route::get('/posts/{post}', \App\Http\Controllers\API\Mobile\User\v1\Post\ShowController::class);
     Route::post('/posts/{post}/additional', \App\Http\Controllers\API\Mobile\User\v1\Post\StoreAdditionalController::class);
     Route::post('/posts/{post}/like', \App\Http\Controllers\API\Mobile\User\v1\Post\LikeController::class);
     Route::post('/posts/{post}/unlike', \App\Http\Controllers\API\Mobile\User\v1\Post\UnlikeController::class);
-    Route::post('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\StoreController::class);
 
     Route::get('/vacancies', \App\Http\Controllers\API\Mobile\User\v1\Vacancy\IndexController::class);
+    Route::get('/vacancies/search', \App\Http\Controllers\API\Mobile\User\v1\Vacancy\SearchController::class);
     Route::get('/vacancies/{vacancy}', \App\Http\Controllers\API\Mobile\User\v1\Vacancy\ShowController::class);
     Route::post('/vacancy', \App\Http\Controllers\API\Mobile\User\v1\Vacancy\StoreController::class);
 });

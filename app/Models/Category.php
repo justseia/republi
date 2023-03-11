@@ -12,5 +12,8 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $guarded = [];
-    protected $hidden = [];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }

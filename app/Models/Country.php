@@ -12,5 +12,8 @@ class Country extends Model
 
     protected $table = 'countries';
     protected $guarded = [];
-    protected $hidden = [];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }

@@ -18,6 +18,8 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => fake()->word(),
+            'categoryable_id' => fake()->numberBetween(1, 50),
+            'categoryable_type' => 'App\Models\Vacancy',
         ];
     }
 }

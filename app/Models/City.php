@@ -12,7 +12,10 @@ class City extends Model
 
     protected $table = 'cities';
     protected $guarded = [];
-    protected $hidden = [];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 
     public function country()
     {

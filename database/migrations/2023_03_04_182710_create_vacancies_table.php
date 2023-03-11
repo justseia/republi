@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
             $table->string('position');
-            $table->unsignedBigInteger('salary_from');
-            $table->unsignedBigInteger('salary_to');
+            $table->unsignedBigInteger('salary_from')->nullable(true);
+            $table->unsignedBigInteger('salary_to')->nullable(true);
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('company_id');
             $table->json('criteria')->nullable(true);

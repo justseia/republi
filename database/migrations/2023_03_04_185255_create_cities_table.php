@@ -14,8 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('country_id');
             $table->string('name');
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
 

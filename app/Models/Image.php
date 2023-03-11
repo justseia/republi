@@ -8,16 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'images';
     protected $guarded = [];
     protected $hidden = [
         'imageable_id',
-        'imageable_type',
-        'created_at',
-        'updated_at',
-        'deleted_at'
+        'imageable_type'
     ];
 
     public function imageable()

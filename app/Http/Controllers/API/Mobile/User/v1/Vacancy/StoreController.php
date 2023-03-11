@@ -16,6 +16,7 @@ class StoreController extends Controller
             'salary_to' => $request->salary_to,
             'location_id' => $request->location_id,
             'company_id' => auth()->user()->id,
+            'category_id' => auth()->user()->id,
             'criteria' => json_encode($request->criteria),
             'responsibility' => json_encode($request->responsibility),
             'requirement' => json_encode($request->requirement),

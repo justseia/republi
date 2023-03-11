@@ -7,9 +7,9 @@ use App\Models\Post;
 
 class ShowController extends BaseController
 {
-    public function __invoke($post)
+    public function __invoke(Post $post)
     {
-        $post = Post::query()->with(['image', 'user', 'category', 'additional_data', 'comments.user', 'comments.replies.user'])->find($post);
+//        $post = Post::query()->with(['image', 'user', 'category', 'additional_data', 'comments.user', 'comments.replies.user'])->find($post);
 
         return new ShowResource($post);
     }

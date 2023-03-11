@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::prefix('auth')->group(function () {
     Route::post('/email/send', \App\Http\Controllers\API\Mobile\User\v1\Auth\SendCodeMailController::class);
     Route::post('/email/verify', \App\Http\Controllers\API\Mobile\User\v1\Auth\VerifyMailController::class);
@@ -25,10 +23,10 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-
-    Route::post('/profile/{user}', \App\Http\Controllers\API\Mobile\User\v1\User\ProfileController::class);
+    Route::get('/profile/{user}', \App\Http\Controllers\API\Mobile\User\v1\User\ProfileController::class);
+    Route::post('/profile/{user}/follow', \App\Http\Controllers\API\Mobile\User\v1\User\FollowContoller::class);
+    Route::post('/profile/{user}/unfollow', \App\Http\Controllers\API\Mobile\User\v1\User\UnfollowContoller::class);
     Route::post('/profile/{user}/posts', \App\Http\Controllers\API\Mobile\User\v1\User\ProfilePostsController::class);
-
     Route::post('/me', \App\Http\Controllers\API\Mobile\User\v1\User\MeController::class);
     Route::post('/me/posts', \App\Http\Controllers\API\Mobile\User\v1\User\MePostsController::class);
 
@@ -38,20 +36,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/posts/{post}/like', \App\Http\Controllers\API\Mobile\User\v1\Post\LikeController::class);
     Route::post('/posts/{post}/unlike', \App\Http\Controllers\API\Mobile\User\v1\Post\UnlikeController::class);
     Route::post('/posts', \App\Http\Controllers\API\Mobile\User\v1\Post\StoreController::class);
+
+    Route::get('/vacancies', \App\Http\Controllers\API\Mobile\User\v1\Vacancy\IndexController::class);
+    Route::get('/vacancies/{vacancy}', \App\Http\Controllers\API\Mobile\User\v1\Vacancy\ShowController::class);
+    Route::post('/vacancy', \App\Http\Controllers\API\Mobile\User\v1\Vacancy\StoreController::class);
 });
 
-//Route::post('/email/send', \App\Http\Controllers\API\v1\Auth\SendCodeMailController::class);
-//Route::post('/email/verify', \App\Http\Controllers\API\v1\Auth\VerifyMailController::class);
-//Route::post('/login', [\App\Http\Controllers\API\v1\Auth\AuthController::class, 'login']);
-//Route::post('/login/company', [\App\Http\Controllers\API\v1\Auth\AuthController::class, 'login']);
-//Route::post('/logout', [\App\Http\Controllers\API\v1\Auth\AuthController::class, 'logout']);
-//Route::post('/refresh', [\App\Http\Controllers\API\v1\Auth\AuthController::class, 'refresh']);
-//Route::post('/me', [\App\Http\Controllers\API\v1\Auth\AuthController::class, 'me']);
-
-//Route::post('/posts/{post}/comment', \App\Http\Controllers\API\Mobile\v1\Comment\StoreController::class);
-//Route::post('/posts/{post}/comment/{comment}', \App\Http\Controllers\API\Mobile\v1\Comment\ReplyController::class);
-//Route::patch('/posts/{post}/comment/{comment}/like', \App\Http\Controllers\API\Mobile\v1\Comment\LikeController::class);
-//Route::patch('/posts/{post}/comment/{comment}/unlike', \App\Http\Controllers\API\Mobile\v1\Comment\UnlikeController::class);
-//Route::get('/vacancies', \App\Http\Controllers\API\v1\Vacancy\IndexController::class);
-//Route::get('/vacancies/{vacancy}', \App\Http\Controllers\API\v1\Vacancy\ShowController::class);
-//Route::post('/vacancy', \App\Http\Controllers\API\v1\Vacancy\StoreController::class);

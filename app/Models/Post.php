@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Overtrue\LaravelFavorite\Traits\Favoriteable;
+use Overtrue\LaravelLike\Traits\Likeable;
 
 class Post extends Model
 {
     use HasFactory, SoftDeletes;
+    use Favoriteable;
+    use Likeable;
 
     protected $table = 'posts';
     protected $guarded = [];
@@ -17,11 +21,6 @@ class Post extends Model
         'updated_at',
         'deleted_at'
     ];
-
-    public function like()
-    {
-        return $this->morphOne(Like::class, 'likeable')->where('user_id', auth()->user()->id);
-    }
 
     public function images()
     {

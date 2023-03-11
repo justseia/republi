@@ -15,12 +15,13 @@ class MeResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'image' => $this->image,
             'username' => $this->username,
             'scope' => 'Designer & Videographer',
-            'total_post' => '679',
+            'total_post' => $this->posts->count(),
             'total_followers' => '2600542',
             'total_follows' => '648',
-            'total_likes' => '444',
+            'total_likes' => $this->user_likes,
         ];
     }
 }

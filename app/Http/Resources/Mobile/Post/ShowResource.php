@@ -20,7 +20,7 @@ class ShowResource extends JsonResource
             'body' => $this->body,
             'image' => $this->image,
             'additional_data' => AdditionalDataResource::collection($this->additional_data),
-            'user' => new UserResource($this->user),
+            'user' => new UserResource($this->user_post),
             'category' => $this->category->name,
             'created_at' => $this->created_at->diffForHumans(now(), true),
             'total_likes' => $this->likes,

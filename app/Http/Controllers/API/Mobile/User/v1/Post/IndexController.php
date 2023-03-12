@@ -9,7 +9,9 @@ class IndexController extends BaseController
 {
     public function __invoke()
     {
-        $posts = Post::latest('id')->with(['images', 'user', 'category', 'comments', 'like'])->simplePaginate(50);
+        $posts = Post::latest('id')->with(['images', 'user_post', 'category', 'comments', 'likers'])->simplePaginate(50);
+
+        $posts = auth()->user()->attachLikeStatus($posts);
 
         return IndexResource::collection($posts);
     }

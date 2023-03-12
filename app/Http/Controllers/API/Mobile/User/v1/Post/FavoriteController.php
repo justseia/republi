@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\API\Mobile\User\v1\Post;
 
 use App\Http\Controllers\Controller;
-use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class LikeController extends BaseController
+class FavoriteController extends Controller
 {
     public function __invoke(Post $post)
     {
-        auth()->user()->like($post);
+        auth()->user()->favorite($post);
 
         return response()->json([
             'status' => '200',
-            'message' => 'Like'
+            'message' => 'Favorite'
         ], 200);
     }
 }

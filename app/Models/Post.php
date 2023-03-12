@@ -32,9 +32,9 @@ class Post extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function user()
+    public function user_post()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->with('user');
     }
 
     public function category()

@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'username' => $this->username,
             'photo' => $this->photo,
             'is_popular' => (boolean)$this->is_popular,
-            'is_follow' => (boolean)$this->is_popular,
+            'is_follow' => (boolean)$this->id,
         ];
     }
 }

@@ -11,7 +11,7 @@ class UnlikeController extends BaseController
 {
     public function __invoke(Post $post)
     {
-        $post->like()->delete();
+        auth()->user()->unlike($post);
 
         return response()->json([
             'status' => '200',
